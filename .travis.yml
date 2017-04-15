@@ -1,7 +1,10 @@
 language: d
+sudo: required
 d:
- - dmd-2.073.1
  - ldc-1.1.0
- - ldc-1.0.0
+before_install:
+ - sudo add-apt-repository ppa:webupd8team/terminix -y
+ - sudo apt-get update -q
+ - sudo apt-get install gtkd libphobos2-ldc -y
 script:
- - dub build
+ - ./autogen.sh && ./configure && make
